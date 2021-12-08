@@ -8,18 +8,15 @@ def read_file(file_name):
                 continue
             name, price = i.strip().split(',')
             data_1.append([name, price])
-        print(data_1)
     return(data_1)
 
-def items_input():
-    sheet = []
+def items_input(sheet):
     while True:
         name = input('請輸入產品名稱: ')
         if name == 'end':
             break
         price = input('請輸入產品金額: ')
         sheet.append([name, price])
-    return(sheet)
 
 def print_data(w):
     for a in w:
@@ -37,13 +34,14 @@ def main():
     file_name = input('檔案名稱: ')
     if os.path.isfile(file_name):
         print('找到檔案，開啟中')
-        result = read_file(file_name)
+        print(read_file(file_name))
     else:
         print('該檔案不存在')
 
-    sheet = items_input()
-    print(sheet)
-    creat_data(file_name, sheet)
+    data_1 = read_file(file_name)
+    items_input(data_1)
+    print(data_1)
+    creat_data(file_name, data_1)
 
 main()
 
