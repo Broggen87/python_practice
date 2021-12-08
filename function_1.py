@@ -33,17 +33,19 @@ def creat_data(products, sheet):
         for i in sheet:
             f_1.write(i[0] + ',' + i[1] + '\n')
 
+def main():
+    file_name = input('檔案名稱: ')
+    if os.path.isfile(file_name):
+        print('找到檔案，開啟中')
+        result = read_file(file_name)
+    else:
+        print('該檔案不存在')
 
-file_name = input('檔案名稱: ')
-if os.path.isfile(file_name):
-    print('找到檔案，開啟中')
-    result = read_file(file_name)
-else:
-    print('該檔案不存在')
+    sheet = items_input()
+    print(sheet)
+    creat_data(file_name, sheet)
 
-sheet = items_input()
-print(sheet)
-creat_data(file_name, sheet)
+main()
 
 
 
